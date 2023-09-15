@@ -1,7 +1,14 @@
+
+using LibroVoluminoso.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<AppDbContext>(opciones => opciones.UseSqlServer(
+	builder.Configuration.GetConnectionString("ConexionDefecto")
+	));
 
 var app = builder.Build();
 
