@@ -15,11 +15,15 @@ namespace LibroVoluminoso.Controllers
 
 		public IActionResult Index()
 		{
+			_logger.LogInformation("Estoy en la página Home");
+
 			return View();
 		}
 
 		public IActionResult Privacy()
 		{
+			_logger.LogInformation("Estoy en la página Privacy");
+
 			return View();
 		}
 
