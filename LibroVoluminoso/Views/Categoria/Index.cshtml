@@ -1,42 +1,58 @@
-﻿
-
-@model List<Categoria>
+﻿@model List<Categoria>
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1 class="text-center">Listado de las Categorías</h1>
+<div class="container p-3">
+    <div class="row py-4">
+        <div class="col-12">
+            <h1 class="text-center">Listado de las Categorías</h1>
+        </div>
+        <div class="col-12 d-flex align-items-center justify-content-center">
+            <a asp-controller="Categoria" asp-action="Crear" class="btn btn-primary">
+                    <i class="bi bi-plus-circle me-2"></i> Crear Nueva Categoría
+            </a>
+        </div>
+    </div>
 
-@if (Model.Count > 0)
-{
-    <table class="table table-bordered table-striped" style="width:100%;">
-        <thead>
-            <tr>
-                <th>
-                    Nombre de la Categoría
-                </th>
-                <th>
-                    Orden de la Categoría
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (Categoria categoria in Model)
-            {
+    @if (Model != null && Model.Count > 0)
+    {
+        <table class="table table-striped mb-0" style="width:100%;">
+            <thead>
                 <tr>
-                    <td style="width:65%;">
-                        @categoria.Nombre
-                    </td>
-                    <td style="width:35%;">
-                        @categoria.MostrarOrden
-                    </td>
+                    <th style="width:65%;">
+                        Nombre de la Categoría
+                    </th>
+                    <th style="width:35%;">
+                        Orden de la Categoría
+                    </th>
                 </tr>
-            }
-        </tbody>
+            </thead>
+        </table>
+        <div class="overflow-y-auto" style="max-height:65vh;">
+            <table class="table table-bordered table-striped" style="width:100%;">
+                <tbody>
+                    @for (int n = 0; n < 1; ++n)
+                    {
+                        @foreach (Categoria categoria in Model)
+                        {
+                            <tr>
+                                <td style="width:65%;">
+                                    @categoria.Nombre
+                                </td>
+                                <td style="width:35%;">
+                                    @categoria.MostrarOrden
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <h4 class="text-center">Sin datos para Mostrar ...</h4>
+    }
 
-    </table>
-}
-else{
-    <h4 class="text-center">Sin datos para Mostrar ...</h4>
-}
-
+</div>

@@ -1,0 +1,45 @@
+﻿@model LibroVoluminoso.Models.Categoria
+
+@{
+    ViewData["Title"] = "Crear";
+}
+
+<div class="col-12 d-flex justify-content-around align-items-center" style="height:65vh;">
+    <div class="container border ms-3">
+        <h1 class="text-center mt-3">Crear una Categoría</h1>
+        <hr />
+        <div class="col-12 d-flex justify-content-center mx-2">
+            <div class="col-12 col-md-8">
+                <form method="post" asp-action="Crear">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Nombre" class="control-label mb-3"></label>
+                        <input asp-for="Nombre" class="form-control mb-3" autofocus />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="MostrarOrden" class="control-labe mb-3"></label>
+                        <input asp-for="MostrarOrden" class="form-control mb-3" />
+                        <span asp-validation-for="MostrarOrden" class="text-danger"></span>
+                    </div>
+                    <div class="form-group d-flex justify-content-around mb-3">
+                        <input type="submit" value="Crear Categoría" class="btn btn-primary col-5" />
+                        <a class="btn btn-success col-5" asp-action="Crear">Resetear Categoria</a>
+                    </div>
+                    <div class="form-group d-flex justify-content-around mb-3">
+                        <a class="btn btn-secondary col-5" asp-action="Index">Back to List</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+    Agregar una vista parcial para las validaciones básicas ...
+-->
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}
