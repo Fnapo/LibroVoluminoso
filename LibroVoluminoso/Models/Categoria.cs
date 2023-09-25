@@ -15,7 +15,7 @@ namespace LibroVoluminoso.Models
 
         [Required(ErrorMessage = "El campo Orden A Mostrar es obligatorio ...")]
 		[DisplayName("Orden A Mostrar")]
-        [Range(0, int.MaxValue, ErrorMessage = "El valor de este campo ha de ser mayor o igual a 1 ...")]
+        [Range(1, 100, ErrorMessage = "El valor de este campo ha de estar entre 1 y 100")]
         public int? MostrarOrden { get; set; }
 
 		public DateTime FechaCreacion { get; set; } = DateTime.Now;

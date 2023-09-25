@@ -10,38 +10,52 @@
         </div>
         <div class="col-12 d-flex align-items-center justify-content-center">
             <a asp-controller="Categoria" asp-action="Crear" class="btn btn-primary">
-                    <i class="bi bi-plus-circle me-2"></i> Crear Nueva Categoría
+                <i class="bi bi-plus-circle me-2"></i> Crear Nueva Categoría
             </a>
         </div>
     </div>
 
     @if (Model != null && Model.Count > 0)
     {
-        <table class="table table-striped mb-0" style="width:100%;">
-            <thead>
-                <tr>
-                    <th style="width:65%;">
-                        Nombre de la Categoría
-                    </th>
-                    <th style="width:35%;">
-                        Orden de la Categoría
-                    </th>
-                </tr>
-            </thead>
-        </table>
         <div class="overflow-y-auto" style="max-height:65vh;">
+            <table class="table table-striped mb-0" style="width:100%">
+                <thead class="sticky-top">
+                    <tr>
+                        <th class="text-center" style="width:40%;">
+                            Nombre Categoría
+                        </th>
+                        <th class="text-center" style="width:20%;">
+                            Orden Categoría
+                        </th>
+                        <th class="text-center" style="width:40%;">
+                            Acciones
+                        </th>
+                    </tr>
+                </thead>
+                @*
+            </table>
+            <div class="overflow-y-auto" style="max-height:65vh;">
             <table class="table table-bordered table-striped" style="width:100%;">
+            *@
                 <tbody>
                     @for (int n = 0; n < 1; ++n)
                     {
                         @foreach (Categoria categoria in Model)
                         {
                             <tr>
-                                <td style="width:65%;">
+                                <td style="width:40%;">
                                     @categoria.Nombre
                                 </td>
-                                <td style="width:35%;">
+                                <td style="width:20%;">
                                     @categoria.MostrarOrden
+                                </td>
+                                <td style="width:40%;">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <a class="btn btn-light col-8 col-md-4" asp-controller="Categoria"
+                                           asp-action="Editar" asp-route-id="@categoria.Id">
+                                            <i class="bi bi-pencil-square"></i> Editar
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         }
